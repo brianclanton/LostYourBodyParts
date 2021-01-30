@@ -2,7 +2,7 @@
 
 public class Movement : MonoBehaviour
 {
-    const float GroundedRadius = .2f;
+    const float GroundedRadius = .1f;
 
     public float speed = 1f;
     public float jumpForce = 200f;
@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     {
         xInput = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && CanJump())
         {
             jump = true;
         }
@@ -52,10 +52,10 @@ public class Movement : MonoBehaviour
         // Move player
         rigidBody.velocity = new Vector2(xInput * speed, rigidBody.velocity.y);
 
-        if (jump && CanJump())
+        if (jump)
         {
-            rigidBody.AddForce(new Vector2(0f, jumpForce));
             jump = false;
+            rigidBody.AddForce(new Vector2(0f, jumpForce));
         }
 
         if (xInput > 0 && !facingRight || xInput < 0 && facingRight)
