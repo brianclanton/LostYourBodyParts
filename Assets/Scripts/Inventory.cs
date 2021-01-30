@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private Dictionary<BodyPartType, int> parts = new Dictionary<BodyPartType, int>();
+    public Dictionary<BodyPartType, int> parts = new Dictionary<BodyPartType, int>();
 
     public void AddPart(BodyPartType type)
     {

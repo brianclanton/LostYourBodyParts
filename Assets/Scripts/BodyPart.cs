@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum BodyPartType
 {
@@ -11,23 +9,22 @@ public enum BodyPartType
 public class BodyPart : MonoBehaviour
 {
     public BodyPartType type;
-    public GameObject player;
 
     private bool canPickup;
 
-    // Update is called once per frame
     void Update()
     {
         if (canPickup && Input.GetKeyDown(KeyCode.E))
         {
-            player.GetComponent<Inventory>().AddPart(type);
+            Debug.Log("Yeet");
+            GameObject.FindWithTag("Player").GetComponent<Inventory>().AddPart(type);
             Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.Equals(player))
+        if (collision.gameObject.CompareTag("Player"))
         {
             canPickup = true;
         }
@@ -35,7 +32,7 @@ public class BodyPart : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.Equals(player))
+        if (collision.gameObject.CompareTag("Player"))
         {
             canPickup = false;
         }

@@ -1,16 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    const float GroundedRadius = .2f;
+
     public float speed = 1f;
     public float jumpForce = 200f;
-    private float xInput;
-    private bool jump;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+
     private Rigidbody2D rigidBody;
     private Inventory inventory;
+
+    private float xInput;
+    private bool jump;
     private bool facingRight = true;
+    private bool grounded;
 
     private void Awake()
     {
@@ -18,20 +23,38 @@ public class Movement : MonoBehaviour
         inventory = GetComponent<Inventory>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         xInput = Input.GetAxisRaw("Horizontal");
-        jump = Input.GetKeyDown(KeyCode.Space);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = true;
+        }
     }
 
     private void FixedUpdate()
     {
+        // Check if grounded
+        Collider2D[] groundColliders = Physics2D.OverlapCircleAll(groundCheck.position, GroundedRadius, groundLayer);
+
+        for (int i = 0; i < groundColliders.Length; i++)
+        {
+            if (groundColliders[i].gameObject != gameObject)
+            {
+                grounded = true;
+                break;
+            }
+        }
+
+
+        // Move player
         rigidBody.velocity = new Vector2(xInput * speed, rigidBody.velocity.y);
 
         if (jump && CanJump())
         {
             rigidBody.AddForce(new Vector2(0f, jumpForce));
+            jump = false;
         }
 
         if (xInput > 0 && !facingRight || xInput < 0 && facingRight)
@@ -39,7 +62,7 @@ public class Movement : MonoBehaviour
             Flip();
         }
     }
-
+        
     private void Flip()
     {
         facingRight = !facingRight;
@@ -51,6 +74,6 @@ public class Movement : MonoBehaviour
 
     private bool CanJump()
     {
-        return inventory.HasPart(BodyPartType.Leg);
+        return grounded && inventory.HasPart(BodyPartType.Leg);
     }
 }
