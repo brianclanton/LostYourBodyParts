@@ -4,8 +4,9 @@ public class Movement : MonoBehaviour
 {
     const float GroundedRadius = .1f;
 
-    public float speed = 1f;
+    public float playerSpeed = 1f;
     public float jumpForce = 200f;
+    public float maxSpeed = 10f;
     public Transform groundCheck;
     public LayerMask groundLayer;
 
@@ -52,12 +53,20 @@ public class Movement : MonoBehaviour
 
 
         // Move player
-        rigidBody.velocity = new Vector2(xInput * speed, rigidBody.velocity.y);
+        rigidBody.velocity = new Vector2(xInput * playerSpeed, rigidBody.velocity.y);
 
         if (jump)
         {
             rigidBody.AddForce(new Vector2(0f, jumpForce));
             jump = false;
+        }
+
+        // Limit velocity
+        float speed = rigidBody.velocity.magnitude;
+
+        if (speed > maxSpeed)
+        {
+            rigidBody.AddForce(rigidBody.velocity.normalized * (maxSpeed - speed));
         }
 
         if (xInput > 0 && !facingRight || xInput < 0 && facingRight)
