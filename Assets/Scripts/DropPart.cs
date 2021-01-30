@@ -5,15 +5,17 @@ public class DropPart : MonoBehaviour
 
     public BodyPartCollection bodyPartPrefabs;
     private Inventory inventory;
+    private Movement movement;
 
     private void Awake()
     {
         inventory = GetComponent<Inventory>();
+        movement = GetComponent<Movement>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && movement.grounded)
         {
             Drop(BodyPartType.Leg);
         }

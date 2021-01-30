@@ -16,9 +16,8 @@ public class Movement : MonoBehaviour
     private float xInput;
     private bool jump;
     private bool facingRight = true;
-    private bool grounded;
-
-    // TODO: Add terminal velocity
+    [HideInInspector]
+    public bool grounded;
 
     private void Awake()
     {
