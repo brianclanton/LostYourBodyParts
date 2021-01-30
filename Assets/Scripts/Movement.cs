@@ -17,6 +17,8 @@ public class Movement : MonoBehaviour
     private bool facingRight = true;
     private bool grounded;
 
+    // TODO: Add terminal velocity
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -54,8 +56,8 @@ public class Movement : MonoBehaviour
 
         if (jump)
         {
-            jump = false;
             rigidBody.AddForce(new Vector2(0f, jumpForce));
+            jump = false;
         }
 
         if (xInput > 0 && !facingRight || xInput < 0 && facingRight)
