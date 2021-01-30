@@ -36,6 +36,7 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         // Check if grounded
+        grounded = false;
         Collider2D[] groundColliders = Physics2D.OverlapCircleAll(groundCheck.position, GroundedRadius, groundLayer);
 
         for (int i = 0; i < groundColliders.Length; i++)
