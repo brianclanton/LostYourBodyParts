@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
     {
         rigidBody.velocity = new Vector2(xInput * speed, rigidBody.velocity.y);
 
-        if (jump)
+        if (jump && CanJump())
         {
             rigidBody.AddForce(new Vector2(0f, jumpForce));
         }
@@ -47,5 +47,10 @@ public class Movement : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
+    }
+
+    private bool CanJump()
+    {
+        return inventory.HasPart(BodyPartType.Leg);
     }
 }

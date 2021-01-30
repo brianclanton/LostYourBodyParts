@@ -4,26 +4,36 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public Dictionary<BodyPartType, int> inventory = new Dictionary<BodyPartType, int>();
+    private Dictionary<BodyPartType, int> parts = new Dictionary<BodyPartType, int>();
 
     public void AddPart(BodyPartType type)
     {
-        if (inventory.ContainsKey(type))
+        if (parts.ContainsKey(type))
         {
-            inventory[type]++;
+            parts[type]++;
             return;
         }
 
-        inventory.Add(type, 1);
+        parts.Add(type, 1);
     }
 
     public void RemovePart(BodyPartType type)
     {
-        if (!inventory.ContainsKey(type))
+        if (!parts.ContainsKey(type))
         {
             return;
         }
 
-        inventory[type]--;
+        parts[type]--;
+    }
+
+    public int GetPartQuantity(BodyPartType type)
+    {
+        return parts.ContainsKey(type) ? parts[type] : 0;
+    }
+
+    public bool HasPart(BodyPartType type)
+    {
+        return GetPartQuantity(type) != 0;
     }
 }
