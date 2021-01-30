@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     public float speed = 1f;
     private float xInput;
     private Rigidbody2D rigidBody;
+    private bool facingRight = true;
 
     private void Awake()
     {
@@ -22,5 +23,19 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         rigidBody.velocity = new Vector2(xInput * speed, rigidBody.velocity.y);
+
+        if (xInput > 0 && !facingRight || xInput < 0 && facingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 }
