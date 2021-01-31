@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
         // Update animation
         animator.SetBool("Jump", !grounded);
         animator.SetBool("Walk", grounded && rigidBody.velocity.magnitude > float.Epsilon);
-        animator.SetBool("Push", touchingBlock && xInput > 0);
+        animator.SetBool("Push", touchingBlock && Mathf.Abs(xInput) > 0);
     }
 
     private void FixedUpdate()
