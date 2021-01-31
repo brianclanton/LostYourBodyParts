@@ -11,6 +11,7 @@ TagManager:
   - Block
   - Cyan
   - Red
+  - Narration
   layers:
   - Default
   - TransparentFX
