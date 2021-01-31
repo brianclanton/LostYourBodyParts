@@ -2,6 +2,8 @@
 
 public class ImmovableWithoutArms : MonoBehaviour
 {
+    public int armsRequired = 1;
+
     private Inventory inventory;
     private Rigidbody2D rigidBody;
 
@@ -14,6 +16,6 @@ public class ImmovableWithoutArms : MonoBehaviour
     }
 
     private void UpdateMass() {
-        rigidBody.mass = inventory.HasPart(BodyPartType.Arm) ? 1 : 100;
+        rigidBody.mass = inventory.GetPartQuantity(BodyPartType.Arm) >= armsRequired ? 1 : 100;
     }
 }
