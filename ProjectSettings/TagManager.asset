@@ -8,6 +8,9 @@ TagManager:
   - Orange
   - Door
   - Grey
+  - Block
+  - Cyan
+  - Red
   layers:
   - Default
   - TransparentFX
