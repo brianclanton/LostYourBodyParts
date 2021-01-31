@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Purple
   - Orange
+  - Door
+  - Grey
   layers:
   - Default
   - TransparentFX

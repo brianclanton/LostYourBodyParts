@@ -21,7 +21,7 @@ public class transformController : MonoBehaviour
     private bool rLegBool;
     private bool lLegBool;
 
-    private readonly float tallY = -6.2f;
+    private readonly float tallY = -7f;
     private readonly float shortY = -3.2f;
 
     // Update is called once per frame
