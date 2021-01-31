@@ -6,7 +6,6 @@ public class MovingPlatform : MonoBehaviour
 {
     public GameObject startpoint;
     public GameObject endpoint;
-    public GameObject temp;
     public float velocity = 4f;
     public bool active = true;
     public int direction = 1;

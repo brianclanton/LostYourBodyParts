@@ -6,6 +6,8 @@ public class Lever : MonoBehaviour
     private bool closed;
     private bool boxhit;
 
+    public MovingPlatform movingPlatform;
+
     void Update()
     {
         if ((canOpen && Input.GetKeyDown(KeyCode.E)) || boxhit)
@@ -16,6 +18,11 @@ public class Lever : MonoBehaviour
                 {
                     Destroy(lockedDoor);
                 }
+            }
+
+            if (movingPlatform != null)
+            {
+                movingPlatform.active = true;
             }
 
             if (closed)

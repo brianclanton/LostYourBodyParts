@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class NarrationController : MonoBehaviour
@@ -13,7 +14,8 @@ public class NarrationController : MonoBehaviour
 
     public void Start()
     {
-        if (Collectibles.count == 0)
+        Scene scene = SceneManager.GetActiveScene();
+        if (Collectibles.count == 0 && scene.name == "level1")
         {
             audioSource.clip = introClip;
             audioSource.Play();

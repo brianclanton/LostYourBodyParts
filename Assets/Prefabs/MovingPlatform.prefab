@@ -98,9 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startpoint: {fileID: 0}
   endpoint: {fileID: 0}
-  temp: {fileID: 0}
-  velocity: 5
-  active: 1
+  velocity: 4
+  active: 0
   direction: 1
 --- !u!61 &4172443892246993286
 BoxCollider2D:
@@ -148,4 +147,4 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 5
