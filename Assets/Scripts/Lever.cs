@@ -3,6 +3,7 @@
 public class Lever : MonoBehaviour
 {
     private bool canOpen;
+    private bool closed;
 
     void Update()
     {
@@ -15,6 +16,13 @@ public class Lever : MonoBehaviour
                     Destroy(lockedDoor);
                 }
             }
+
+            if (closed)
+            {
+                return;
+            }
+
+            closed = true;
 
             Debug.Log("Rotated");
             var leverArm = transform.Find("lever-p");

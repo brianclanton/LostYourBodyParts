@@ -2,7 +2,6 @@
 
 public class DropPart : MonoBehaviour
 {
-
     public BodyPartCollection bodyPartPrefabs;
     private Inventory inventory;
     private Movement movement;
@@ -18,9 +17,7 @@ public class DropPart : MonoBehaviour
         if (!movement.grounded)
         {
             return;
-
         }
-
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -33,7 +30,6 @@ public class DropPart : MonoBehaviour
     }
 
     private void Drop(BodyPartType type)
-
     {
         if (!inventory.HasPart(type))
         {
