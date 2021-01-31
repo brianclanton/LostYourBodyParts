@@ -4,10 +4,11 @@ public class Lever : MonoBehaviour
 {
     private bool canOpen;
     private bool closed;
+    private bool boxhit;
 
     void Update()
     {
-        if (canOpen && Input.GetKeyDown(KeyCode.E))
+        if ((canOpen && Input.GetKeyDown(KeyCode.E)) || boxhit)
         {
             foreach (GameObject lockedDoor in GameObject.FindGameObjectsWithTag(tag))
             {
@@ -38,11 +39,23 @@ public class Lever : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            boxhit = true;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             canOpen = false;
+        }
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            boxhit = false;
         }
     }
 }
