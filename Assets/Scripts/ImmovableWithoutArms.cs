@@ -17,6 +17,11 @@ public class ImmovableWithoutArms : MonoBehaviour
 
         rigidBody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+
+        if (armsRequired > 1)
+        {
+            audioSource.pitch = 0.8f;
+        }
     }
 
     private void UpdateMass() {
