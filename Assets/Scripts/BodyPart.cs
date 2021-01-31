@@ -11,13 +11,37 @@ public class BodyPart : MonoBehaviour
     public BodyPartType type;
 
     private bool canPickup;
+    private Sprite sprite;
+
+    private void Awake()
+    {
+        sprite = GetComponent<SpriteRenderer>().sprite;
+    }
+
+    private void UpdateSprite(GameObject go)
+    {
+        go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprite;
+    }
 
     void Update()
     {
         if (canPickup && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Yeet");
-            GameObject.FindWithTag("Player").GetComponent<Inventory>().AddPart(type);
+            var player = GameObject.FindWithTag("Player");
+            player.GetComponent<Inventory>().AddPart(type);
+
+            var transformController = player.GetComponent<transformController>();
+
+            if (type == BodyPartType.Arm)
+            {
+                UpdateSprite(transformController.leftArm);
+                UpdateSprite(transformController.rightArm);
+            } else if (type == BodyPartType.Leg)
+            {
+                UpdateSprite(transformController.leftLeg);
+                UpdateSprite(transformController.rightLeg);
+            }
+            
             Destroy(gameObject);
         }
     }
