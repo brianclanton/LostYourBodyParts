@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     private bool facingRight = true;
     [HideInInspector]
     public bool grounded;
+    private bool pushing;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class Movement : MonoBehaviour
         // Update animation
         animator.SetBool("Jump", jump);
         animator.SetBool("Walk", grounded && rigidBody.velocity.magnitude > float.Epsilon);
-        animator.SetBool("Push", false /* TODO: add check */);
+        animator.SetBool("Push", pushing);
     }
 
     private void FixedUpdate()
@@ -56,7 +57,6 @@ public class Movement : MonoBehaviour
                 break;
             }
         }
-
 
         // Move player
         rigidBody.velocity = new Vector2(xInput * playerSpeed, rigidBody.velocity.y);
@@ -109,5 +109,21 @@ public class Movement : MonoBehaviour
     private bool CanJump()
     {
         return grounded && inventory.HasPart(BodyPartType.Leg);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Block")
+        {
+            pushing = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Block")
+        {
+            pushing = false;
+        }
     }
 }
