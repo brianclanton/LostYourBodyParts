@@ -16,11 +16,8 @@ public class DropPart : MonoBehaviour
     {
         if (!movement.grounded)
         {
-            Debug.Log("I'm not grounded");
             return;
         }
-
-        Debug.Log("I'm grounded, I can pick stuff up");
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -28,9 +25,13 @@ public class DropPart : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("Drop that arm tho");
             Drop(BodyPartType.Arm);
         }
+    }
+
+    private Sprite GetNestedSprite(GameObject go)
+    {
+        return go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
     }
 
     private void Drop(BodyPartType type)
@@ -40,7 +41,19 @@ public class DropPart : MonoBehaviour
             return;
         }
 
-        Instantiate(bodyPartPrefabs[type], transform.position, Quaternion.identity);
+        var newPart = Instantiate(bodyPartPrefabs[type], transform.position, Quaternion.identity);
+        var transformController = GameObject.FindWithTag("Player").GetComponent<transformController>();
+        var newPartSpriteRenderer = newPart.GetComponent<SpriteRenderer>();
+
+        if (type == BodyPartType.Arm)
+        {
+            newPartSpriteRenderer.sprite = GetNestedSprite(transformController.leftArm);
+        }
+        else if (type == BodyPartType.Leg)
+        {
+            newPartSpriteRenderer.sprite = GetNestedSprite(transformController.leftLeg);
+        }
+
         inventory.RemovePart(type);
     }
 }

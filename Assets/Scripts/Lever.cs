@@ -24,7 +24,6 @@ public class Lever : MonoBehaviour
 
             closed = true;
 
-            Debug.Log("Rotated");
             var leverArm = transform.Find("lever-p");
             var pivotPoint = leverArm.transform.Find("pivot").transform.position;
             leverArm.transform.RotateAround(transform.position, 45f);
