@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
 
         if (jump)
         {
-            rigidBody.AddForce(new Vector2(0f, jumpForce));
+            rigidBody.AddForce(new Vector2(0f, jumpForce * inventory.GetPartQuantity(BodyPartType.Leg)));
             jump = false;
         }
 
