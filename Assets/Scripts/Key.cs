@@ -2,7 +2,7 @@
 
 public class Key : MonoBehaviour
 {
-    public GameObject lockedDoor;
+    public GameObject[] lockedDoors;
 
     private bool canPickup;
 
@@ -10,7 +10,11 @@ public class Key : MonoBehaviour
     {
         if (canPickup && Input.GetKeyDown(KeyCode.E))
         {
-            Destroy(lockedDoor.gameObject);
+            foreach (var lockedDoor in lockedDoors)
+            {
+                Destroy(lockedDoor.gameObject);
+            }
+
             Destroy(gameObject);
         }
     }
