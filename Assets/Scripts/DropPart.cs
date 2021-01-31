@@ -15,9 +15,20 @@ public class DropPart : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && movement.grounded)
+        if (!movement.grounded)
+        {
+            return;
+
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Drop(BodyPartType.Leg);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Drop(BodyPartType.Arm);
         }
     }
 
@@ -29,9 +40,6 @@ public class DropPart : MonoBehaviour
             return;
         }
 
-        Debug.Log("Yagga");
-
-        // TODO: Throw the part behind you
         Instantiate(bodyPartPrefabs[type], transform.position, Quaternion.identity);
         inventory.RemovePart(type);
     }
