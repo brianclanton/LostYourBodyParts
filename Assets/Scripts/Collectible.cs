@@ -7,32 +7,18 @@ public class Collectible : MonoBehaviour
     public GameObject letter;
     public GameObject targetPos;
     public AudioClip audioClip;
-    public bool isFirst;
 
     private bool canPickup;
     private float zoomTime;
     private bool done;
-
-    private void PlayClip()
-    {
-        var narrationController = GameObject.FindGameObjectWithTag("Narration").GetComponent<NarrationController>();
-        narrationController.PlayNarration(audioClip);
-    }
-
-    private void Start()
-    {
-        if (isFirst)
-        {
-            PlayClip();
-        }
-    }
 
     void Update()
     {
         if (canPickup && Input.GetKeyDown(KeyCode.E))
         {
             Collectibles.AddCollectible();
-            PlayClip();
+            var narrationController = GameObject.FindGameObjectWithTag("Narration").GetComponent<NarrationController>();
+            narrationController.PlayNarration(audioClip);
             // Disable interaction
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Animator>().enabled = false;
