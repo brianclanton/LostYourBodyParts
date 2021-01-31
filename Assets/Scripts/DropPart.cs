@@ -16,8 +16,11 @@ public class DropPart : MonoBehaviour
     {
         if (!movement.grounded)
         {
+            Debug.Log("I'm not grounded");
             return;
         }
+
+        Debug.Log("I'm grounded, I can pick stuff up");
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -25,6 +28,7 @@ public class DropPart : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
+            Debug.Log("Drop that arm tho");
             Drop(BodyPartType.Arm);
         }
     }
