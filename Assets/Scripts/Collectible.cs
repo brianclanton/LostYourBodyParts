@@ -1,15 +1,36 @@
 ﻿using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Collectible : MonoBehaviour
 {
+    public int LerpTime = 2;
+
+    public GameObject letter;
+    public GameObject targetPos;
+
     private bool canPickup;
+    private float zoomTime;
+    private bool done;
 
     void Update()
     {
         if (canPickup && Input.GetKeyDown(KeyCode.E))
         {
-            // TODO: Apply coin to player
-            Destroy(gameObject);
+            Collectibles.AddCollectible();
+            // Disable interaction
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Animator>().enabled = false;
+            GetComponent<ParticleSystem>().Stop();
+            letter.transform.rotation = Quaternion.identity;
+            zoomTime = Time.time;
+        }
+
+        // Zoom
+        if (zoomTime > 0 && !done)
+        {
+            float t = Mathf.Min((Time.time - zoomTime) / LerpTime, 1);
+            letter.transform.localPosition = Vector3.Slerp(Vector3.zero, targetPos.transform.localPosition, t);
+            if (t == 1)
+                done = true;
         }
     }
 
