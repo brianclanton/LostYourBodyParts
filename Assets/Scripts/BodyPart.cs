@@ -11,16 +11,10 @@ public class BodyPart : MonoBehaviour
     public BodyPartType type;
 
     private bool canPickup;
-    private Sprite sprite;
-
-    private void Awake()
-    {
-        sprite = GetComponent<SpriteRenderer>().sprite;
-    }
 
     private void UpdateSprite(GameObject go)
     {
-        go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprite;
+        go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     void Update()
