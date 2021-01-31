@@ -18,6 +18,7 @@ public class Endgame : MonoBehaviour
             princessHide.SetActive(false);
             player.GetComponent<Movement>().enabled = false;
             player.GetComponent<Animator>().StopPlayback();
+            player.GetComponent<Rigidbody2D>().Sleep();
             if (Collectibles.count == 15)
                 theEnd.SetActive(false);
             else
