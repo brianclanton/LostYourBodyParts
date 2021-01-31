@@ -6,6 +6,7 @@ public class Collectible : MonoBehaviour
 
     public GameObject letter;
     public GameObject targetPos;
+    public AudioClip audioClip;
 
     private bool canPickup;
     private float zoomTime;
@@ -16,6 +17,8 @@ public class Collectible : MonoBehaviour
         if (canPickup && Input.GetKeyDown(KeyCode.E))
         {
             Collectibles.AddCollectible();
+            var narrationController = GameObject.FindGameObjectWithTag("Narration").GetComponent<NarrationController>();
+            narrationController.PlayNarration(audioClip);
             // Disable interaction
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Animator>().enabled = false;
