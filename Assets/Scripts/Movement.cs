@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
         }
 
         // Update animation
-        animator.SetBool("Jump", jump);
+        animator.SetBool("Jump", !grounded);
         animator.SetBool("Walk", grounded && rigidBody.velocity.magnitude > float.Epsilon);
         animator.SetBool("Push", pushing);
     }
