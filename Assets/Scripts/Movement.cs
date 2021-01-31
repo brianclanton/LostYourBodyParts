@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     public float maxSpeed = 10f;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public Animator animator;
 
     private Rigidbody2D rigidBody;
     private Inventory inventory;
@@ -34,6 +35,11 @@ public class Movement : MonoBehaviour
         {
             jump = true;
         }
+
+        // Update animation
+        animator.SetBool("Jump", jump);
+        animator.SetBool("Walk", grounded && rigidBody.velocity.magnitude > float.Epsilon);
+        animator.SetBool("Push", false /* TODO: add check */);
     }
 
     private void FixedUpdate()
