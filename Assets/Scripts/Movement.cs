@@ -5,7 +5,8 @@ public class Movement : MonoBehaviour
     const float GroundedRadius = .1f;
 
     public float playerSpeed = 1f;
-    public float jumpForce = 200f;
+    public float jumpForce = 850f;
+    public float highjumpForce = 1000f;
     public float maxSpeed = 10f;
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -68,7 +69,14 @@ public class Movement : MonoBehaviour
 
         if (jump)
         {
-            rigidBody.AddForce(new Vector2(0f, jumpForce * inventory.GetPartQuantity(BodyPartType.Leg)));
+            if (inventory.GetPartQuantity(BodyPartType.Leg) != 1)
+            {
+                rigidBody.AddForce(new Vector2(0f, highjumpForce));
+            }
+            else
+            {
+                rigidBody.AddForce(new Vector2(0f, jumpForce));
+            }
             jump = false;
         }
 
