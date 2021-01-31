@@ -6,9 +6,6 @@ public static class Collectibles
 
     public static void AddCollectible()
     {
-        var narrationController = GameObject.FindGameObjectWithTag("Narration").GetComponent<NarrationController>();
-        narrationController.PlayNarration(count);
-
         count++;
     }
 }

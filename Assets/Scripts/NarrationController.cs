@@ -3,8 +3,6 @@
 [RequireComponent(typeof(AudioSource))]
 public class NarrationController : MonoBehaviour
 {
-    public AudioClip[] audioClips;
-
     private AudioSource audioSource;
 
     private void Awake()
@@ -12,14 +10,15 @@ public class NarrationController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayNarration(int num)
+   
+    public void PlayNarration(AudioClip clip)
     {
         if (audioSource.isPlaying)
         {
             audioSource.Pause();
         }
 
-        audioSource.clip = audioClips[num];
+        audioSource.clip = clip;
         audioSource.Play();
     }
 }
