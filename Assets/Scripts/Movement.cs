@@ -54,18 +54,12 @@ public class Movement : MonoBehaviour
         // Move player
         rigidBody.velocity = new Vector2(xInput * playerSpeed, rigidBody.velocity.y);
 
+        // TODO: Limit y velocity to player speed
+
         if (jump)
         {
             rigidBody.AddForce(new Vector2(0f, jumpForce));
             jump = false;
-        }
-
-        // Limit velocity
-        float speed = rigidBody.velocity.magnitude;
-
-        if (speed > maxSpeed)
-        {
-            rigidBody.AddForce(rigidBody.velocity.normalized * (maxSpeed - speed));
         }
 
         if (xInput > 0 && !facingRight || xInput < 0 && facingRight)
