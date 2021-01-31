@@ -55,6 +55,16 @@ public class Movement : MonoBehaviour
         rigidBody.velocity = new Vector2(xInput * playerSpeed, rigidBody.velocity.y);
 
         // TODO: Limit y velocity to player speed
+        //var velocityY = Mathf.Abs(rigidBody.velocity.y);
+
+        //if (velocityY > maxSpeed)
+        //{
+        //    var brakingForce = new Vector2(0f, Mathf.Sign(velocityY) * (maxSpeed - velocityY) / Time.fixedDeltaTime);
+
+        //    Debug.Log("Braking force: " + brakingForce.y);
+
+        //    rigidBody.AddForce(brakingForce);
+        //}
 
         if (jump)
         {
@@ -66,8 +76,13 @@ public class Movement : MonoBehaviour
         {
             Flip();
         }
+
+        //if (rigidBody.velocity.y != 0)
+        //{
+        //    Debug.Log("velocity y: " + rigidBody.velocity.y);
+        //}
     }
-        
+
     private void Flip()
     {
         facingRight = !facingRight;
