@@ -12,6 +12,7 @@ TagManager:
   - Cyan
   - Red
   - Narration
+  - Dead
   layers:
   - Default
   - TransparentFX

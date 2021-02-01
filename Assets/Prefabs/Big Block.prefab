@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1101551256789940367}
   - component: {fileID: 8126012523053437901}
   - component: {fileID: 508389216}
+  - component: {fileID: 5120621638150594278}
+  - component: {fileID: 8479013373754681623}
   m_Layer: 8
   m_Name: Big Block
   m_TagString: Block
@@ -133,7 +135,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.02436304, y: -0.007308364}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -144,7 +146,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.98, y: 1.98}
+  m_Size: {x: 1.4429965, y: 1.9653833}
   m_EdgeRadius: 0
 --- !u!82 &508389216
 AudioSource:
@@ -243,3 +245,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &5120621638150594278
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101551256789940360}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: cfa7660105af240ebbcae6d9c175a226, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.64664054, y: -0.008584267}
+  m_Size: {x: 0.6838343, y: 1.959943}
+  m_Direction: 0
+--- !u!70 &8479013373754681623
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101551256789940360}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: cfa7660105af240ebbcae6d9c175a226, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6809758, y: -0.0028612625}
+  m_Size: {x: 0.60371876, y: 1.9713881}
+  m_Direction: 0
