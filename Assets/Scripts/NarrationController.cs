@@ -14,8 +14,9 @@ public class NarrationController : MonoBehaviour
 
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Scene scene = SceneManager.GetActiveScene();
-        if (Collectibles.count == 0 && scene.name == "level1")
+        if (Collectibles.count == 0 && scene.name == "Level1")
         {
             audioSource.clip = introClip;
             audioSource.Play();

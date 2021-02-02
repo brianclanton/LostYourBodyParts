@@ -1009,7 +1009,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 63892bb5d27c5534ea0061539ad33658, type: 3}
     m_FontSize: 26
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 63892bb5d27c5534ea0061539ad33658, type: 3}
     m_FontSize: 26
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -2145,7 +2145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736598565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9841137, y: -27.982018, z: -10}
+  m_LocalPosition: {x: -5.123781, y: -27.47427, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3123,7 +3123,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 63892bb5d27c5534ea0061539ad33658, type: 3}
     m_FontSize: 26
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -3834,7 +3834,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 63892bb5d27c5534ea0061539ad33658, type: 3}
     m_FontSize: 26
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -3981,7 +3981,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 63892bb5d27c5534ea0061539ad33658, type: 3}
     m_FontSize: 26
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -7777,7 +7777,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: f3ab5bac09383421494f359e696356e7, type: 3}
+      objectReference: {fileID: 8300000, guid: d979f5c6511cc4ce2b689d5c9b95c356, type: 3}
     - target: {fileID: 7055040701194211398, guid: 30e4107eac7081d49a5811634ac40bb0,
         type: 3}
       propertyPath: m_LocalPosition.x
